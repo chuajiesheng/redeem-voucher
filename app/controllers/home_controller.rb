@@ -11,6 +11,9 @@ class HomeController < ApplicationController
       return redirect_to root_path
     end
 
+    voucher.used = true
+    voucher.save!
+
     cheatsheet_path = File.join(Rails.root, 'app','assets', 'pdfs', 'cheatsheet.pdf')
     send_file cheatsheet_path
   end
