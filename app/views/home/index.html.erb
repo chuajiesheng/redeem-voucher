@@ -1,6 +1,10 @@
 <h1>Redeem Voucher</h1>
 <p>Please enter your provided voucher code below:</p>
 
+<% if flash[:error] %>
+  <p><%= flash[:error] %></p>
+<% end %>
+
 <%= form_tag(home_redeem_path, method: "post") do %>
   <%= label_tag(:voucher, "Voucher Code:") %>
   <%= text_field_tag(:voucher) %>
