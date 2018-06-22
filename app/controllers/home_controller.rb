@@ -6,7 +6,7 @@ class HomeController < ApplicationController
     voucher_uuid = params.permit(:voucher)[:voucher]
     voucher = Voucher.find_by_uuid(voucher_uuid)
 
-    if not voucher
+    if not voucher or voucher.used?
       flash[:error] = 'Please provide a valid voucher code.'
       return redirect_to root_path
     end
